@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="Imagenes de html/proyecto_final_integrador_icono.ico">   
+    <!-- Link archivo CSS -->
+    <link rel="stylesheet" href="CSS/index_style.css">
+    <!-- Links font: Roboto Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Carter+One&family=Roboto+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <!-- Links font: Source Serif Pro -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Carter+One&family=Source+Serif+Pro&display=swap" rel="stylesheet">
+    <!-- Links font: IBM Plex Serif -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&display=swap" rel="stylesheet">
+    <!-- Links font: Hind Madurai -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@500&display=swap" rel="stylesheet">
+    <!-- Links font: Rowdies -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@300&display=swap" rel="stylesheet">
+    <!-- Links font: Barlow -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400&display=swap" rel="stylesheet">
+    <title>Proyecto Final Integrador</title>
+</head>
+<body>
+   
+
+    <!-- CABECERA -->
+    <header>
+        
+        <img class="logo" src="Imagenes de html/PFI_192x192.png" alt="Logo">
+        <h2 class="titulo_cabecera">Proyecto final integrador - Argentina Programa</h2>
+        <p class="texto_cabecera_modo">Modo oscuro</p>
+        <!-- Rounded switch -->
+        <label class="switch">
+            <input type="checkbox" id="checkbox">
+            <span class="slider round"></span>
+        </label>
+    </header>
+
+    <aside>
+        <!-- BARRA LATERAL-->
+        <div class="barra_lateral">
+
+            <!-- IMAGEN CV -->
+            <img src="https://assets.dev-filo.dift.io/img/2021/10/07/ricardo_fort_sq.jpg" alt="Imagen del autor del CV" id="imagen_cv">
+
+            <!-- BOTONES DE LAS PESTAÑAS -->
+            <div class="pestaña_barra">
+                <button class="pestaña" onclick="mostrar_pestaña(event, 'Información_personal')">Información personal</button>
+                <button class="pestaña" onclick="mostrar_pestaña(event, 'Experiencia')">Experiencia</button>
+                <button class="pestaña" onclick="mostrar_pestaña(event, 'Habilidades')">Habilidades</button>
+                <button class="pestaña" onclick="mostrar_pestaña(event, 'Información_adicional')">Información adicional</button>
+            </div>
+        </div>
+    </aside>
+
+        <!-- PESTAÑAS -->
+        <div class="contenedor">
+            
+            <!-- PESTAÑA 1 -->
+            <div class="pestaña_contenido" id="Información_personal">
+                <h2 class="titulo2">Información personal</h2>
+                <ul class="lista">
+                <li class="item">Nombre: Aureliano Buendía Cruz</li>
+                <li class="item">Profesión: Especialista en Marketing</li>
+                <li class="item">Dirección: Calle de la Libertad, 17 28004, Madrid, España</li>
+                <li class="item">Teléfono: +34 911 63 35 96</li>
+                </ul>
+            </div>
+        
+            <!-- PESTAÑA 2 -->
+            <div class="pestaña_contenido" id="Experiencia">
+                <h2 class="titulo2">Experiencia</h2>
+                <h5 class="titulo5">Especialista en Marketing</h5>
+                <h5 class="titulo5">Atenea Advertising</h5>
+                <h5 class="titulo5">Febrero 2018 - Actualidad</h5>
+                <ul class="lista">
+                    <li class="item">Desarrollé una campaña de email marketing enfocada a B2B la cual atrajo a 3 clientes adicionales para la empresa.</li>
+                    <li class="item">Generé una estrategia de posicionamiento orgánico que elevó el tráfico de la página web de Orla Cosmetics en un 20%.</li>
+                    <li class="item">Monitoreé continuamente cada una de las 8 cuentas de mi equipo y generé un reporte de resultados semanal.</li>
+                    <li class="item">Lidereé un equipo de 6 personas, compuesto de diseñadores, community managers, desarrolladores web y copywriters.</li>
+                </ul>
+                <h5 class="titulo5">Estrategista Digital</h5>
+                <h5 class="titulo5">Cúpula Group</h5>
+                <h5 class="titulo5">Marzo 2017 - Febrero 2018</h5>
+                <ul class="lista">
+                    <li class="item">Responsable de generar briefs creativos y calendarios de contenidos para las 5 cuentas de la empresa.</li>
+                    <li class="item">Desarrollé una estrategia de contenido en Twitter que duplicó el número de seguidores de la marca Zales Atelier.</li>
+                    <li class="item">Colaboré con un equipo de diseñadores y escritores web para generar una campaña en Facebook Ads que elevó el engagement de la marca Bonanza Books en un 15%.</li>
+                    <li class="item">Di entrenamiento y capacitación a 3 community managers que se unieron al equipo de trabajo de la empresa.</li>
+                </ul>
+                <h5 class="titulo5">Educación</h5>
+                <ul class="lista">
+                    <li class="item">Grado en Marketing</li>
+                    <li class="item">ESERP Businesss & Law School</li>
+                    <li class="item">Septiembre 2013 - Junio 2017</li>
+                </ul>
+            </div>
+
+            <!-- PESTAÑA 3 -->
+            <div class="pestaña_contenido" id="Habilidades">
+                <h2 class="titulo2">Habilidades</h2>
+                <ul class="lista">
+                    <li class="item">Desarrollo de estrategias digitales</li>
+                    <li class="item">Trabajo en equipo</li>
+                    <li class="item">AB Testing</li>
+                    <li class="item">Liderazgo</li>
+                    <li class="item">Generación y manejo de presupuesto</li>
+                    <li class="item">Técnicas de SEO</li>
+                    <li class="item">Reporte de resultados</li>
+                </ul>
+                <h5 class="titulo5">Idiomas</h5>
+                    <ul class="lista">
+                        <li class="item">Inglés C1</li>
+                        <li class="item">Portugués B1</li>
+                        <li class="item">Italiano B2</li>
+                        <li class="item">Español C2 (Nativo)</li>
+                    </ul>
+            </div>
+
+            <!-- PESTAÑA 4 -->
+            <div class="pestaña_contenido" id="Información_adicional">
+                <h2 class="titulo2">Información adicional</h2>
+                <h5 class="titulo5">Descripción personal</h5>
+                <p class="item" id="parrafo">Especialista en marketing con más de 3 años de experiencia en el área de la publicidad digital.
+                    A lo largo de mi trayectoria en Atenea Advertising, he logrado
+                    elevar las ventas de nuestra cuenta más importante, Naturalife, en un 20% gracias
+                    a la implementación de una plataforma de e-commerce a través de Instagram. 
+                    Busco obtener un puesto similar en el equipo de Helia Publicidad para desarrollar 
+                    nuevas estrategias que fortalezcan la presencia digital de la empresa.</p>
+            </div>
+
+        </div>
+
+    
+        <!-- PIE DE PÁGINA -->
+    <footer>
+        <p class="texto_pie" id="copyright">&copy;Copyright 2023</p>
+        <h2 class="titulo_pie">Proyecto final Integrador</h2>
+        <p class="texto_pie" id="contacto">Eugeestrada143@gmail.com</p>
+    </footer>
+ 
+    <!-- lINK DE ARCHIVO JAVASCRIPT -->
+    <script src="Java/index_functions.js"></script>
+   
+</body>
+</html>

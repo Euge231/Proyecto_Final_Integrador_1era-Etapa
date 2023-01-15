@@ -1,0 +1,579 @@
+/**================================================================================================
+////////////////////////////////// VARIABLES GLOBALES /////////////////////////////////////////////
+==================================================================================================*/
+*{
+    box-sizing: border-box;
+}
+html{
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+body{
+    box-sizing: border-box;
+    display:grid;
+    grid-template-rows: auto 1fr auto; 
+    height:100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    transition: background 0.2s linear; /** Hace que haya un delay al cambiar el color del fondo */
+}
+
+/**================================================================================================
+////////////////////////////////// HEADER Y SUS COMPONENTES ///////////////////////////////////////
+==================================================================================================*/
+header{
+    box-sizing: border-box;
+    z-index: 1; /** Mientras z-index tenga un valor mayor al z-index del resto de elementos (en 0 por default) entonces el header
+                opacara al resto de elementos cuando scrollemos */
+    position: fixed;
+    display: flex;
+    top: 0;
+    background-color: #8300FF;
+    max-height: 7vh;
+    width: 100%;
+    left: 0;
+    box-shadow: 0px 0px 12px rgba(0,0,0,.6);
+} 
+
+header:after{
+    padding-top: 56.25%;
+    display: block;
+    content: '';
+}
+
+
+
+.logo{
+    width: 6vh;
+    height: auto;
+    position: fixed;
+    left: 30px;
+    top: 0.3%;
+}
+
+.titulo_cabecera{
+    top: 0;
+    left: 8%;
+    position: fixed;
+    font-size: 2.7vh;
+    margin: 0;
+    font-family: 'Hind Madurai', sans-serif;
+    padding: 0;
+    font-weight: bolder;
+    color: #FFFFFF;
+}
+
+.texto_cabecera_modo{
+    position: fixed;
+    right: 150px;
+    font-family: 'Carter One', cursive;
+    font-family: 'Source Serif Pro', serif;
+    font-size: 1.25vw;
+    color: #FFFFFF;
+}
+/* MODIFICA LA CAJA ALREDEDOR DEL SLIDER */
+.switch {
+    position: fixed;
+    display: inline-block;
+    width: 49px;
+    height: 25px;
+    right: 90px;
+    top: 20px;
+}
+  
+/* ESCONDE EL SWITCH POR DEFAULT DE HTML */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+  
+/* MODIFICA EL SLIDER */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 17px;
+    width: 17px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+  
+input:checked + .slider {
+    background-color: #000000;
+}
+  
+input:focus + .slider {
+    box-shadow: 0 0 1px #000000;
+}
+  
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+  
+/* HACE QUE EL SLIDER SEA REDONDO */
+.slider.round {
+    border-radius: 34px;
+}
+  
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/**================================================================================================
+////////////////////////////////// BODY Y SUS COMPONENTES  ///////////////////////////////////////
+==================================================================================================*/
+
+
+
+/**------------------------
+||||| BARRA LATERAL |||||||
+---------------------------*/
+
+aside{
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+/** MODIFICA LA BARRA LATERAL */
+.barra_lateral {
+    box-sizing: border-box;
+    height: 100%; /** Antes tenia 100, le saque 10, 5 para footer, 5 para header */
+    width: 15%; 
+    position: fixed; /** Mantenerse en el mismo lugar durante el scroll */
+    z-index: 1; /** Mantenerse arriba */
+    top: 7%; /** Mantenerse arriba */
+    left: 0;
+    background-color: #000865;
+    overflow-x: hidden; /** Desactiva el scroll horizontal */
+    padding-top: 20px;
+    border-right: 1vh solid #C8C4C0;
+}
+
+#imagen_cv{
+    height: auto;
+    width: 70%;
+    border:5px solid #000C43;
+    margin-left: 3%;
+    color: rgb(255, 167, 35); /** Modifica el color de la fuente del mensaje que cargara si es que la imagen no llega a cargarse */
+    background-color: rgb(255, 255, 255); /** modifica el color del bloque en el cual iria la imagen (si es que la imagen no llega a cargar) */
+    font-family: 'Roboto Mono', monospace; /** Modifica la fuente del mensaje (cuando no se carga la imagen) */
+    position: relative;
+    left: 10%;
+    border-radius: 100%;
+}
+
+/** MODIFICA CONTENEDOR DE BOTONES */
+.pestaña_barra{
+    width: 90%;
+    flex-shrink: 0;
+    background-color: #b3b3b3;
+    box-sizing: content-box;
+    border: 3px solid #b3b3b3;
+    margin-left: 3%;
+    margin-top: 10%;
+}
+
+/** MODIFICA BOTONES */
+.pestaña{
+    display: block;
+    padding: 5%;
+    background-color: rgb(218, 218, 218);
+    border: none;
+    width: 100%;
+    outline: none;
+    cursor: pointer;
+    font-family: 'IBM Plex Serif', serif !important;
+    margin-bottom: 2px;
+    font-size: small;
+}
+
+/** CAMBIA EL COLOR DE LA PESTAÑA CUANDO EL CURSOR SE POSA SOBRE ELLA */
+.pestaña:hover{
+    background-color: #b1b1b1
+}
+
+/** CAMBIA EL COLOR DE LA PESTAÑA CUANDO SE HACE CLICK EN ELLA */
+.pestaña:active{
+    background-color: #8e8e8e;
+}
+
+.pestaña:last-of-type{
+    margin-bottom: 0;
+}
+
+/**------------------------
+||||| CUERPO/CONTENIDO |||||
+---------------------------*/
+
+/** MODIFICA CONTENEDOR DE PESTAÑAS */
+.contenedor{
+    box-sizing: border-box;
+    display: inline-block;
+    margin-top: 0;
+    width: 85%;
+    height: 100%;
+    position: relative;
+    margin-left: 15%;
+    top: 50px;
+}
+
+.pestaña_contenido{
+    display: none;
+    animation: fadeEffect 1s;
+    margin-top: 1vh;
+}
+
+/** MODIFICA LAS CONDICIONES DEL PRIMER ELEMENTO DENTRO DEL BLOQUE */
+.pestaña_contenido > :first-child {
+    margin-top: 0;
+}
+
+/** PERMITE UN "DELAY" ENTRE LA TRANSICION DE UNA PESTAÑA A OTRA */
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/** MODIFICA TEXTO DENTRO DE LAS PESTAÑAS */
+.item{
+    font-family: 'Roboto Mono', monospace;
+    margin-left: 4%;
+}
+
+/** MODIFICA SUBTITULOS DENTRO DE LAS PESTAÑAS */
+.titulo5{
+    font-family: 'Carter One', cursive;
+    font-family: 'Source Serif Pro', serif;
+    margin-left: 4%;
+}
+
+/** MODIFICA TITULOS DENTRO DE LAS PESTAÑAS */
+.titulo2{
+    font-family: 'IBM Plex Serif', serif;
+    margin-left: 1%;
+
+}
+
+/** MODIFICA AL PARRAFO DE LA PESTAÑA 4 */
+#parrafo{
+    margin-left: 6%;
+}
+
+/** MODIFICA LA INFORMACION DE LA PRIMERA PESTAÑA */
+#Información_personal{
+    display: block;
+}
+
+/**================================================================================================
+////////////////////////////////// FOOTER Y SUS COMPONENTES ///////////////////////////////////////
+==================================================================================================*/
+
+footer{
+    box-sizing: border-box;
+    z-index: 2; /** Mientras z-index tenga un valor mayor al z-index del resto de elementos (en 0 por default) entonces el header
+                opacara al resto de elementos cuando scrollemos */
+    background-color: #FFAE00;
+    border: 0;
+    padding: 5vh;
+    margin: 0;
+    min-width: 100%;
+    margin-top: 50px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    display: flex;
+    max-height: 10vh !important
+}
+
+.pie_element{
+    margin-bottom: 0;
+}
+
+.texto_pie{
+    font-family: 'Barlow', sans-serif;
+}
+
+.titulo_pie{
+    font-family: 'Rowdies', cursive;
+    position: relative;
+    left: 35%;
+    font-size: large;
+
+}
+
+#contacto{
+    position: relative;
+    left: 45%;
+}
+
+#copyright{
+    position: relative;
+    left: 25%;
+}
+
+/**================================================================================================
+//////////////////////////////////////// MEDIA QUERIES ////////////////////////////////////////////
+==================================================================================================*/
+
+/* MODIFICA EL STYLE SI LA PANTALLA TIENE 1000PX DE ALTURA O MÁS */
+@media (min-height: 1000px) {
+    .pestaña_contenido{
+       margin-top: 3vh;
+    }
+}
+
+/* MODIFICA EL STYLE SI LA PANTALLA TIENE 1150PX DE ANCHO O MENOS */
+@media (max-width: 1150px) {
+    #copyright{
+        left: 0;
+    }
+    .titulo_pie{
+        left: 10%;
+    }
+    #contacto{
+        left: 15%
+    }
+    .switch{
+        right: 3%;
+        top: 4%;
+    }
+    .texto_cabecera_modo{
+        font-size: 2vh;
+        right: 12%;
+        top: 2%;
+    }
+    .logo{
+        left: 3%;
+    }
+    .titulo_cabecera{
+        left: 15%;
+    }
+}
+
+/* MODIFICA EL STYLE SI LA PANTALLA TIENE 640PX DE ANCHO O MENOS */
+@media (max-width: 640px) {
+    .barra_lateral{
+        width: 20%;
+    }
+    .contenedor{
+        margin-left: 20%;
+        width: 80%;
+    }
+    footer{
+        box-sizing: content-box;
+    }
+    #copyright{
+        left: 0%;
+        font-size: 2.5vw;
+    }
+    .titulo_pie{
+        left: 10%;
+        font-size: 2.5vw;
+    }
+    #contacto{
+        left: 15%;
+        font-size: 2.5vw;
+    }
+    .switch{
+        width: 10%;
+        height: 2%;
+        right: 3%;
+        top: 4%;
+    }
+    .slider:before{
+        height: 70%;
+        width: 30%;
+        left: 10%;
+        bottom: 15%;
+    }
+    .titulo_cabecera{
+        font-size: 2.5vh;
+        left: 20%;
+    }
+    .texto_cabecera_modo{
+        right: 15%;
+        top: 2.5%;
+        font-size: 1.5vh;
+    }
+    input:checked + .slider:before {
+        -webkit-transform: translateX(200%);
+       -ms-transform: translateX(200%);
+       transform: translateX(200%);
+    }
+    .logo{
+        left: 3%;
+    }
+}
+
+/* MODIFICA EL STYLE SI LA PANTALLA TIENE 480PX DE ANCHO O MENOS */
+@media (max-width: 480px) {
+    .barra_lateral{
+       width: 35%;
+    }
+    .contenedor{
+        margin-left: 35%;
+        width: 65%;
+    }
+    .slider:before{
+        height: 100%;
+        width: 50%;
+        left: 0;
+        bottom: 0;
+    }
+    input:checked + .slider:before {
+         -webkit-transform: translateX(100%);
+        -ms-transform: translateX(100%);
+        transform: translateX(100%);
+    }
+    .titulo_cabecera{
+        font-size: 2vh;
+    }
+    .titulo_cabecera{
+        font-size: 1.7vh;
+    }
+    .texto_cabecera_modo{
+        font-size: 1.5vh;
+        right: 13%;
+        top: 2%;
+    }
+    .switch{
+        width: 10%;
+        height: 3%;
+        right: 1%;
+        top: 3%;
+    }
+    footer{
+        box-sizing: content-box;
+    }
+    #copyright{
+        left: 0%;
+        font-size: 2.5vw;
+    }
+    .titulo_pie{
+        left: 10%;
+        font-size: 2.5vw;
+    }
+    #contacto{
+        left: 15%;
+        font-size: 2.5vw;
+    }
+    .logo{
+        left: 3%;
+    }
+}
+
+/**================================================================================================
+++++++++++++++++++++++++++++++++ FUNCIONALIDAD JS: MODO OSCURO ++++++++++++++++++++++++++++++++++++
+==================================================================================================*/
+
+body.oscuro{
+    background-color: #000000;
+    transition: background 0.2s linear;
+}
+
+body.oscuro header{
+    background-color: #181818;
+    transition: background 0.2s linear;
+}
+
+body.oscuro footer{
+    background-color: #181818;
+    transition: background 0.2s linear;
+}
+
+body.oscuro .barra_lateral{
+    background-color: #070707;
+    transition: background 0.2s linear;
+    border-right: 1vh solid #181818;
+    transition: border 0.2s linear;
+}
+
+body.oscuro .pestaña_barra{
+    background-color: #333333;
+    border: 3px solid #181818;
+    transition: background 0.2s linear;
+    transition: border 0.2s linear;
+}
+
+body.oscuro .pestaña{
+    background-color: #000000;
+    color: #FFFFFF;
+    transition: background 0.2s linear;
+    transition: color 0.2s linear;
+}
+
+body.oscuro .titulo2{
+    color: #FFFFFF;
+    transition: color 0.2s linear;
+}
+
+body.oscuro .item{
+    color: #FFFFFF;
+    transition: color 0.2s linear;
+}
+
+body.oscuro .titulo_cabecera {
+    color: #FFFFFF;
+    transition: color 0.2s linear;
+}
+
+body.oscuro .titulo5{
+    color: #FFFFFF;
+    transition: color 0.2s linear;
+}
+
+body.oscuro .titulo_pie{
+    color: #FFFFFF;
+    transition: color 0.2s linear;
+}
+
+body.oscuro .texto_pie{
+    color: #FFFFFF;
+    transition: color 0.2s linear;
+}
+
+body.oscuro .texto_cabecera_modo{
+    color: #FFFFFF;
+    transition: color 0.2s linear;
+}
+
+body.oscuro #imagen_cv{
+    background-color: #2D2D2D;
+    color: rgb(255, 255, 255);
+    border: 5px solid #181818;
+    transition: color 0.2s linear;
+    transition: background 0.2s linear;
+    transition: border 0.2s linear;
+}
+
+body.oscuro .pestaña:active{
+    color: #ff0000;
+    transition: 0s linear;
+}
+
+body.oscuro .pestaña:hover{
+    background-color: #1E1E1E;
+}
